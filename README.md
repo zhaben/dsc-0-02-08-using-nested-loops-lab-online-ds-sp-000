@@ -176,40 +176,61 @@ soccer_match = [
 
 ```python
 # iterate over the soccer_match list to create a new list with the name of the country for each team
-countries = None
+countries = []
 # code goes here
+for team in soccer_match:
+    countries.append(team['country'])
+countries
 ```
 
 
 ```python
 # iterate over the soccer_match list to create a new list with the colors for each team
 # this should be only one list containing strings for each of the country's colors
-colors = None
+colors = []
 # code goes here
+for team in soccer_match:
+    for color in team['colors']:
+        colors.append(color)
+colors
 ```
 
 
 ```python
 # iterate over the soccer_match list to create a new list with the players from each team
 # this should be only one list containing the dictionaries for each of the country's players
-players = None
+players = []
 # code goes here
+for team in soccer_match:
+    for player in team['players']:
+        players.append(player)
+players
 ```
 
 
 ```python
 # iterate over the soccer_match list to create a new list with the captains from each team
 # this should be only one list containing the dictionaries for each of the country's captains
-captains = None
+captains = []
 # code goes here
+for team in soccer_match:
+    for player in team['players']:
+        if player['captain']:
+            captains.append(player)
+captains
 ```
 
 
 ```python
 # iterate over the soccer_match list to create a new list with the players from ONLY the home team
 # this should be only one list containing the dictionaries for each of the home team's players
-home_team_players = None
+home_team_players = []
 # code goes here
+for team in soccer_match:
+    if team['home_team']:
+        for player in team['players']:
+            home_team_players.append(player)
+home_team_players
 ```
 
 
@@ -217,8 +238,14 @@ home_team_players = None
 # iterate over the soccer_match list to create a new list 
 # with the players from ONLY the away team with the position of forward
 # this should be only one list containing the dictionaries for each of the selected players
-forwards = None
+forwards = []
 # code goes here
+for team in soccer_match:
+    if team['away_team']:
+        for player in team['players']:
+            if player['position'] == 'Forward':
+                forwards.append(player)
+forwards
 ```
 
 
@@ -227,6 +254,11 @@ forwards = None
 # assign the player with the highst shirt_number to player_with_highest_num variable
 player_with_highest_num = None
 # code goes here
+for team in soccer_match:
+    for player in team['players']:
+        if not player_with_highest_num or player_with_highest_num['shirt_number'] < player['shirt_number']:
+            player_with_highest_num = player
+player_with_highest_num
 ```
 
 
@@ -234,8 +266,12 @@ player_with_highest_num = None
 # as we can see, the players all have their last names in all caps, as if they are being yelled
 # we want a list of all the names of the players in this match
 # but we want both first and last names to be formatted in title case
-player_names = None
+player_names = []
 # code goes here
+for team in soccer_match:
+    for player in team['players']:
+        player_names.append(player['name'].title())
+player_names
 ```
 
 ## Summary
